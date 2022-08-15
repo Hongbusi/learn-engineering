@@ -5,7 +5,7 @@ function f1() {
     entry: './index.js',
     mode: 'none',
     output: {
-      iife: false,
+      iife: false, // 告诉 webpack 添加 IIFE（立即调用函数表达式） 外层包裹生成的代码
       pathinfo: 'verbose'
     }
   })
