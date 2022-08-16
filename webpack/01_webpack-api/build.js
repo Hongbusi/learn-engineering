@@ -21,18 +21,18 @@ function f2() {
   })
 }
 
-f1().run((err, stats) => {
+f1().run((err, stat) => {
   if (err)
     console.log(err)
 
-  if (stats)
-    console.log(stats.endTime - stats.startTime)
+  if (stat)
+    console.log(stat.endTime - stat.startTime)
 })
 
-f2().run((err, stats) => {
+f2().run((err, stat) => {
   if (err)
     console.log(err)
 
-  if (stats)
-    console.log(stats.endTime - stats.startTime)
+  if (stat)
+    console.log(stat.endTime - stat.startTime)
 })
