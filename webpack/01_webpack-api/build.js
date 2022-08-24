@@ -1,38 +1,22 @@
+const path = require('path')
 const webpack = require('webpack')
 
-function f1() {
+function build() {
   return webpack({
-    entry: './index.js',
     mode: 'none',
+
+    entry: {
+      index: './index.js',
+      index2: './index2.js'
+    },
+
     output: {
-      iife: false, // 告诉 webpack 添加 IIFE（立即调用函数表达式） 外层包裹生成的代码
-      pathinfo: 'verbose'
+      path: path.resolve(__dirname, 'build'),
+      filename: '[name].js'
     }
   })
 }
 
-function f2() {
-  return webpack({
-    entry: './index.js',
-    mode: 'none',
-    optimization: {
-      runtimeChunk: true
-    }
-  })
-}
-
-f1().run((err, stat) => {
-  if (err)
-    console.log(err)
-
-  if (stat)
-    console.log(stat.endTime - stat.startTime)
-})
-
-f2().run((err, stat) => {
-  if (err)
-    console.log(err)
-
-  if (stat)
-    console.log(stat.endTime - stat.startTime)
+build().run((_err, stat) => {
+  console.log('构建时间', stat.endTime - stat.startTime)
 })
