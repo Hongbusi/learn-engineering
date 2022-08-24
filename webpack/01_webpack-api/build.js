@@ -8,5 +8,7 @@ function build() {
 }
 
 build().run((_err, stat) => {
-  console.log('构建时间', stat.endTime - stat.startTime)
+  const startTime = stat.startTime
+  const endTime = stat.endTime
+  console.log('构建时间', endTime - startTime)
 })
